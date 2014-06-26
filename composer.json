@@ -3,7 +3,7 @@
     "type": "library",
     "description":  "AMQP service provider for the Silex framwork.",
     "keywords": ["amqp", "rabbitmq", "queue", "silex"],
-    "homepage": "https://github.com/moriony/silex-amqp-provider",
+    "homepage": "https://github.com/Ebichan/silex-amqp-provider",
     "license":  "MIT",
     "authors": [
         {
