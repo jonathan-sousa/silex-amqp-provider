@@ -14,7 +14,7 @@
     "require": {
         "pimple/pimple": "*",
         "silex/silex": "1.*",
-        "videlalvaro/php-amqplib": "dev-master",
+        "videlalvaro/php-amqplib": "dev-master"
     },
     "autoload": {
         "psr-0": {
