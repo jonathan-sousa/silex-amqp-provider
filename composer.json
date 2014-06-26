@@ -1,0 +1,24 @@
+{
+    "name": "ebichan/silex-amqp-provider",
+    "type": "library",
+    "description":  "AMQP service provider for the Silex framwork.",
+    "keywords": ["amqp", "rabbitmq", "queue", "silex"],
+    "homepage": "https://github.com/moriony/silex-amqp-provider",
+    "license":  "MIT",
+    "authors": [
+        {
+            "name": "Jonathan Sousa",
+            "email": "sousa.jonathan@gmail.com"
+        }
+    ],
+    "require": {
+        "pimple/pimple": "*",
+        "silex/silex": "1.*",
+        "videlalvaro/php-amqplib": "dev-master",
+    },
+    "autoload": {
+        "psr-0": {
+            "Amqp\\Silex": "src"
+        }
+    }
+}
