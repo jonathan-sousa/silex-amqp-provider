@@ -1,6 +1,6 @@
 # silex-amqp-provider
 
-[Amqp](http://www.amqp.org/) service provider for the [Silex](http://silex.sensiolabs.org/) framwork.
+[Amqp](http://www.amqp.org/) service provider for the [Silex](http://silex.sensiolabs.org/) framework.
 
 This repository is strongly inspired by the work of Vitaliy Chesnokov on his [Mongo Silex Provider](https://github.com/moriony/silex-mongo-provider).
 
