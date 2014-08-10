@@ -31,11 +31,11 @@ class AmqpServiceProvider implements ServiceProviderInterface
         );
 
         $app[self::AMQP_FACTORY] = $app->protect(function ($host = 'localhost', $port = 5672, $username = 'guest', $password = 'guest') use ($app) {
-            return $app[AmqpServiceProvider::AMQP]->createConnection($server, $options);
+            return $app[self::AMQP]->createConnection($host, $port, $username, $password);
         });
 
         $app[self::AMQP] = $app->share(function () use ($app) {
-            return new AmqpConnectionProvider($app[AmqpServiceProvider::AMQP_CONNECTIONS]);
+            return new AmqpConnectionProvider($app[self::AMQP_CONNECTIONS]);
         });
     }
 
