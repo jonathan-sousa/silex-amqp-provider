@@ -26,7 +26,8 @@ $app->register(new AmqpServiceProvider, array(
             'host' => 'localhost',
             'port' => 5672,
             'username' => 'guest',
-            'password' => 'guest'
+            'password' => 'guest',
+            'vhost'    => '/'
         )
     ),
 ));
@@ -41,5 +42,5 @@ $defaultConnection = $connections['default'];
 ###  Creating amqp connection via factory
 ```php
 $amqpFactory = $app['amqp.factory'];
-$customConnection = $amqpFactory('localhost', 5672, 'guest', 'guest');
+$customConnection = $amqpFactory('localhost', 5672, 'guest', 'guest', '/');
 ```

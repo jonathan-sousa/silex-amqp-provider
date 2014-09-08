@@ -14,7 +14,7 @@ class AmqpConnectionProvider extends \Pimple
         $provider = $this;
         foreach ($options as $key => $connection) {
             $this['default'] = $this->share(function () use ($connection, $provider) {
-                return $provider->createConnection($connection['host'], $connection['port'], $connection['username'], $connection['password']);
+                return $provider->createConnection($connection['host'], $connection['port'], $connection['username'], $connection['password'], $connection['vhost']);
             });
         }
     }
@@ -24,10 +24,11 @@ class AmqpConnectionProvider extends \Pimple
      * @param  integer         $port
      * @param  string          $username
      * @param  string          $password
+     * @param  string          $vhost
      * @return \AMQPConnection
      */
-    public function createConnection($host = 'localhost', $port = 5672, $username = 'guest', $password = 'guest')
+    public function createConnection($host = 'localhost', $port = 5672, $username = 'guest', $password = 'guest', $vhost = '/')
     {
-        return new AMQPConnection($host, $port, $username, $password);
+        return new AMQPConnection($host, $port, $username, $password, $vhost);
     }
 }

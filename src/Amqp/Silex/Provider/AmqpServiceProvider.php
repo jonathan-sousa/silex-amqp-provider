@@ -26,12 +26,13 @@ class AmqpServiceProvider implements ServiceProviderInterface
                 'host' => 'localhost',
                 'port' => 5672,
                 'username' => 'guest',
-                'password' => 'guest'
+                'password' => 'guest',
+                'vhost' => '/'
             )
         );
 
-        $app[self::AMQP_FACTORY] = $app->protect(function ($host = 'localhost', $port = 5672, $username = 'guest', $password = 'guest') use ($app) {
-            return $app[self::AMQP]->createConnection($host, $port, $username, $password);
+        $app[self::AMQP_FACTORY] = $app->protect(function ($host = 'localhost', $port = 5672, $username = 'guest', $password = 'guest', $vhost = '/') use ($app) {
+            return $app[self::AMQP]->createConnection($host, $port, $username, $password, $vhost);
         });
 
         $app[self::AMQP] = $app->share(function () use ($app) {
