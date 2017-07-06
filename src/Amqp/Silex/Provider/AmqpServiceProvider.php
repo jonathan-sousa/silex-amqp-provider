@@ -21,17 +21,25 @@ class AmqpServiceProvider implements ServiceProviderInterface
      */
     public function register(Application $app)
     {
-        $app[self::AMQP_CONNECTIONS] = array(
-            'default' => array(
-                'host' => 'localhost',
-                'port' => 5672,
-                'username' => 'guest',
-                'password' => 'guest',
-                'vhost' => '/'
-            )
-        );
+        if (empty($app[self::AMQP_CONNECTIONS])) {
+            $app[self::AMQP_CONNECTIONS] = array(
+                'default' => array(
+                    'host' => 'localhost',
+                    'port' => 5672,
+                    'username' => 'guest',
+                    'password' => 'guest',
+                    'vhost' => '/',
+                ),
+            );
+        }
 
-        $app[self::AMQP_FACTORY] = $app->protect(function ($host = 'localhost', $port = 5672, $username = 'guest', $password = 'guest', $vhost = '/') use ($app) {
+        $app[self::AMQP_FACTORY] = $app->protect(function (
+            $host = 'localhost',
+            $port = 5672,
+            $username = 'guest',
+            $password = 'guest',
+            $vhost = '/'
+        ) use ($app) {
             return $app[self::AMQP]->createConnection($host, $port, $username, $password, $vhost);
         });
 
@@ -48,5 +56,6 @@ class AmqpServiceProvider implements ServiceProviderInterface
      * a service must be requested).
      */
     public function boot(Application $app)
-    {}
+    {
+    }
 }
